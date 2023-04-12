@@ -46,7 +46,8 @@
   const ATTEMPS = 5;
   const guesses = document.querySelector('.guesses');
   const lastResult = document.querySelector('.lastResult');
-  const lowOrHi = document.querySelector('lowOrHi');
+  //const lowOrHi = document.querySelector('lowOrHi');
+  const lowOrHi = document.querySelector('.lowOrHi');
   const guessSubmit = document.querySelector('.guessSubmit');
   const guessField = document.querySelector('.guessField');
 
@@ -63,16 +64,19 @@
 
     if(userGuess === randomNumber) {
       lastResult.textContent = '!!!Pérdistes!!!';
-      lastResult.style.backgroundColor = 'black';
+      lastResult.style.backgroundColor = 'red';
+      //lastResult.style.backgroundColor = 'black';
       lowOrHi.textContent = '';
       setGameOver();
     } else if(guessCount === ATTEMPS) {
       lastResult.textContent = 'Felicitaciones! adivinaste el número!';
-      lastResult.style.backgroundColor = 'red';
+      lastResult.style.backgroundColor = 'green';
+      //lastResult.style.backgroundColor = 'red';
       setGameOver();
     } else {
       lastResult.textContent = 'Incorrecto! ';
-      lastResult.style.backgroundColor = 'green';
+      lastResult.style.backgroundColor = 'black';
+      //lastResult.style.backgroundColor = 'green';
       if(userGuess < randomNumber) {
         lowOrHi.textContent = 'El número es mayor!';
       } else if(userGuess > randomNumber) {
@@ -84,7 +88,8 @@
     guessField.value = '';
     guessField.focus();
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  guessSubmit.addEventListener('click', checkGuess);
+  //guessSubmit.addeventListener('click', checkGuess);
 
   function setGameOver() {
 	  guessField.disabled = true;
@@ -111,7 +116,8 @@
 
 	  lastResult.style.backgroundColor = 'white';
 
-	  randomNumber = Math.floor(Math.random()) + 1;
+    randomNumber = Math.floor(Math.random() * 100) + 1;
+	  //randomNumber = Math.floor(Math.random()) + 1;
   }
 </script>
 </html>
